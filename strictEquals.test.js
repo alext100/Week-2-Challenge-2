@@ -2,14 +2,15 @@ function strictEquals(a, b) {
     if (isNaN(a) && isNaN(b)) {
         return false;
     }
-    if (a === -0 || b === -0) {
+    if (isNaN(a / b)) {
         return true;
     }
+
     return Object.is(a, b);
 }
 
 describe('function strictEquals', function() {
-    test('when function add recives 1 and 1, it returns true', () => {
+    test('when function strictEquals recives 1 and 1, it returns true', () => {
         const n1 = 1;
         const n2 = 1;
         const expected = true;
@@ -17,7 +18,7 @@ describe('function strictEquals', function() {
         expect(result).toBe(expected);
     });
 
-    test('when function add recives 1 and "1", it returns false', () => {
+    test('when function strictEquals recives 1 and "1", it returns false', () => {
         const n1 = 1;
         const n2 = "1";
         const expected = false;
@@ -25,7 +26,7 @@ describe('function strictEquals', function() {
         expect(result).toBe(expected);
     });
 
-    test('when function add recives true and false, it returns false', () => {
+    test('when function strictEquals recives true and false, it returns false', () => {
         const n1 = true;
         const n2 = false;
         const expected = false;
@@ -33,7 +34,7 @@ describe('function strictEquals', function() {
         expect(result).toBe(expected);
     });
 
-    test('when function add recives false and false, it returns true', () => {
+    test('when function strictEquals recives false and false, it returns true', () => {
         const n1 = false;
         const n2 = false;
         const expected = true;
@@ -41,7 +42,7 @@ describe('function strictEquals', function() {
         expect(result).toBe(expected);
     });
 
-    test('when function add recives "Water" and "oil", it returns false', () => {
+    test('when function strictEquals recives "Water" and "oil", it returns false', () => {
         const n1 = "Water";
         const n2 = "oil";
         const expected = false;
@@ -49,7 +50,7 @@ describe('function strictEquals', function() {
         expect(result).toBe(expected);
     });
 
-    test('when function add recives NaN and NaN, it returns false', () => {
+    test('when function strictEquals recives NaN and NaN, it returns false', () => {
         const n1 = NaN;
         const n2 = NaN;
         const expected = false;
@@ -57,7 +58,7 @@ describe('function strictEquals', function() {
         expect(result).toBe(expected);
     });
 
-    test('when function add recives 0 and -0, it returns true', () => {
+    test('when function strictEquals recives 0 and -0, it returns true', () => {
         const n1 = 0;
         const n2 = -0;
         const expected = true;
@@ -65,7 +66,7 @@ describe('function strictEquals', function() {
         expect(result).toBe(expected);
     });
 
-    test('when function add recives -0 and 0, it returns true', () => {
+    test('when function strictEquals recives -0 and 0, it returns true', () => {
         const n1 = -0;
         const n2 = 0;
         const expected = true;
