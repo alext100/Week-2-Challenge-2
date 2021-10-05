@@ -2,8 +2,9 @@ function strictEquals(a, b) {
     if (isNaN(a) && isNaN(b)) {
         return false;
     }
-    a = Math.abs(a);
-    b = Math.abs(b);
+    if (isNaN(a / b)) {
+        return true;
+    }
 
     return Object.is(a, b);
 }
